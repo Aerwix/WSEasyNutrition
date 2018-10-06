@@ -1,7 +1,7 @@
 package POJOS;
 
 public class alimentos {
-    private String IdAlimento;
+    private Integer idAlimento;
     private String nombre;
     private double calorias;
     private String porcion;
@@ -9,19 +9,19 @@ public class alimentos {
     public alimentos() {
     }
 
-    public alimentos(String IdAlimento, String nombre, double calorias, String porcion) {
-        this.IdAlimento = IdAlimento;
+    public alimentos(Integer idAlimento, String nombre, double calorias, String porcion) {
+        this.idAlimento = idAlimento;
         this.nombre = nombre;
         this.calorias = calorias;
         this.porcion = porcion;
     }
 
-    public String getIdAlimento() {
-        return IdAlimento;
+    public Integer getIdAlimento() {
+        return idAlimento;
     }
 
-    public void setIdAlimento(String IdAlimento) {
-        this.IdAlimento = IdAlimento;
+    public void setIdAlimento(Integer IdAlimento) {
+        this.idAlimento = IdAlimento;
     }
 
     public String getNombre() {
@@ -47,5 +47,4 @@ public class alimentos {
     public void setPorcion(String porcion) {
         this.porcion = porcion;
     }
-    
 }
