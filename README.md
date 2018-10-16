@@ -7,6 +7,11 @@ Alimentos | Citas | Consultas |
 --------- | ----- | ----------|
 1         |   0   |     0     |
 
+## Nomenclatura para UI
+Label = lb
+TextField = txtNombreAcción
+Button = btnNombreAcción
+
 ## Lista de Servicios Creados
 ### Ya hecho
 
