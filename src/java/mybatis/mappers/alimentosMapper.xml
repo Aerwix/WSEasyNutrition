@@ -7,10 +7,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
     <select id="getAllAlimentos" resultType="POJOS.alimentos">
           SELECT 
-          alimentos.idAlimento,
-          alimentos.nombre,
-          alimentos.calorias,
-          alimentos.porcion
-          FROM alimentos
+          alimento.idAlimento,
+          alimento.nombre,
+          alimento.calorias,
+          alimento.porcion
+          FROM alimento
+    </select>
+    
+    <select id="getAlimentoById" resultType="POJOS.alimentos" parameterType="int">
+        SELECT
+        alimento.idAlimento,
+        alimento.nombre,
+        alimento.calorias,
+        alimento.porcion
+        FROM alimento WHERE alimento.idAlimento = #{idAlimento}
+    </select>
+    
+    <select id="getAlimentoByName" resultType="POJOS.alimentos" parameterType="String">
+        SELECT 
+        alimento.idAlimento,
+        alimento.nombre,
+        alimento.calorias,
+        alimento.porcion
+        FROM alimento WHERE alimento.nombre = #{nombre}
     </select>
 </mapper>
