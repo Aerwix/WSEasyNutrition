@@ -20,5 +20,3 @@ CREATE TABLE porciones(idPorcion INT NOT NULL PRIMARY KEY AUTO_INCREMENT, gramos
 
 CREATE TABLE Medicion(idMedicion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,idConsulta INT NOT NULL,talla VARCHAR(15),peso VARCHAR(15),estatura FLOAT,imc VARCHAR(15),FOREIGN KEY(idConsulta) REFERENCES consulta(idConsulta));
 CREATE TABLE consulta(idConsulta  INT NOT NULL PRIMARY KEY AUTO_INCREMENT,idPaciente INT NOT NULL, idMedico  INT NOT NULL,idDieta INT NOT NULL,dieta VARCHAR(20),observaciones VARCHAR(40),FOREIGN KEY (idPaciente) REFERENCES paciente(idPaciente),FOREIGN KEY (idMedico) REFERENCES medico(idMedico),FOREIGN KEY(idDieta) REFERENCES dieta(idDieta));
-
-
