@@ -31,4 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         alimento.porcion
         FROM alimento WHERE alimento.nombre = #{nombre}
     </select>
+    
+    <insert id="nuevoAlimento" parameterType="POJOS.alimentos">
+        INSERT INTO
+        alimento (idAlimento, nombre, calorias, porcion)
+        VALUES
+        (#{idAlimento}, #{nombre}, #{calorias}, #{porcion})
+    </insert>
+    
 </mapper>

@@ -1,11 +1,14 @@
 package ws;
 
+import POJOS.Mensaje;
 import POJOS.alimentos;
 import java.util.List;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -79,6 +82,38 @@ public class NutritionWS {
                 resultado = conn.selectOne("alimentos.getAlimentoByName", nombre);
             } catch (Exception e){
                 e.printStackTrace();
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("nuevoAlimento")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje nuevoAlimento(
+            @FormParam("idAlimento") Integer idAlimento,
+            @FormParam("nombre") String nombre,
+            @FormParam("calorias") double calorias,
+            @FormParam("porcion") String porcion){
+        
+        Mensaje resultado = null;
+        alimentos  cat = new alimentos(idAlimento, nombre, calorias, porcion);
+        SqlSession conn = MyBatisUtil.getSession();
+        if (conn != null) {
+            try {
+                int result = conn.insert("alimentos.nuevoAlimento", cat);
+                if (result == 1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Registrado correctamente");
+                } else {
+                    conn.rollback();
+                    resultado = new Mensaje(false, "No se pudo registrar");
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
             } finally {
                 conn.close();
             }
