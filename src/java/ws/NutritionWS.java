@@ -3,6 +3,7 @@ package ws;
 import POJOS.Mensaje;
 import POJOS.alimentos;
 import java.util.List;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -144,6 +145,33 @@ public class NutritionWS {
                     conn.rollback();//deshace la operación
                     resultado = new Mensaje(false, "El cliente no se pudo modificar");
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("eliminarAlimento")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje eliminaAlimento(@FormParam("idAlimento") Integer idAlimento){
+    
+        Mensaje resultado = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("alimentos.eliminarAlimento", idAlimento);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Alimento eliminado correctamente.");
+                }else{
+                    conn.rollback();
+                    resultado = new Mensaje(false, "El alimento no se pudo eliminar");
+                }               
             } catch (Exception e) {
                 e.printStackTrace();
                 resultado = new Mensaje(false, e.getMessage());

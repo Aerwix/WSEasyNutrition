@@ -40,7 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <update id="actualizarAlimento" parameterType="POJOS.alimentos">
-        UPDATE alimento SET nombre = #{nombre}, calorias = #{calorias}, porcion = #{porcion} WHERE idAlimento  = #{idAlimento}
+        UPDATE alimento SET nombre = #{nombre}, calorias = #{calorias}, porcion = #{porcion} WHERE idAlimento = #{idAlimento}
     </update>
     
+    <delete id="eliminarAlimento" parameterType="POJOS.alimentos">
+        DELETE FROM alimento where idAlimento = #{idAlimento}
+    </delete>
 </mapper>
