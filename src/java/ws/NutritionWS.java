@@ -9,6 +9,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -115,6 +116,38 @@ public class NutritionWS {
                 e.printStackTrace();
                 resultado = new Mensaje(false, e.getMessage());
             } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("actualizarAlimento")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje actualizaCatalogo(
+            @FormParam("idAlimento") Integer idAlimento,
+            @FormParam("nombre") String nombre,
+            @FormParam("calorias") double calorias,
+            @FormParam("porcion") String porcion){
+    
+        Mensaje resultado = null;
+        alimentos cat = new alimentos(idAlimento, nombre, calorias, porcion);
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("alimentos.actualizarAlimento" , cat);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Cliente modificado correctamente.");
+                }else{
+                    conn.rollback();//deshace la operación
+                    resultado = new Mensaje(false, "El cliente no se pudo modificar");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
                 conn.close();
             }
         }

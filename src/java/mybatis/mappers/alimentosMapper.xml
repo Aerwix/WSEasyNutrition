@@ -39,4 +39,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         (#{idAlimento}, #{nombre}, #{calorias}, #{porcion})
     </insert>
     
+    <update id="actualizarAlimento" parameterType="POJOS.alimentos">
+        UPDATE alimento SET nombre = #{nombre}, calorias = #{calorias}, porcion = #{porcion} WHERE idAlimento  = #{idAlimento}
+    </update>
+    
 </mapper>

@@ -30,3 +30,9 @@ Alimentos | Citas | Consultas |
 4. Servicio: _nuevoAlimento_
    1. Desc: Agrega un alimento al registro.
    2. URL: http://localhost:8084/WSEN/webresources/api/nuevoAlimento
+   3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+
+5. Servicio: _actualizarAlimento_
+   1. Desc: Agrega un alimento al registro.
+   2. URL: http://localhost:8084/WSEN/webresources/api/nuevoAlimento
+   3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
