@@ -25,7 +25,7 @@ DROP TABLE `medidasConsulta`;
 DROP TABLE `horario_dieta`;
 
 
-DROP TABLE `tipo_porcion`;
+DROP TABLE `porcion`;
 
 
 DROP TABLE `estatus`;
@@ -68,9 +68,9 @@ PRIMARY KEY (`idHorario`)
 
 
 
--- ************************************** `tipo_porcion`
+-- ************************************** `porcion`
 
-CREATE TABLE `tipo_porcion`
+CREATE TABLE `porcion`
 (
  `idPorcion` INTEGER NOT NULL AUTO_INCREMENT ,
  `Tipo`      VARCHAR(45) NOT NULL ,
@@ -132,7 +132,7 @@ CREATE TABLE `alimento`
 
 PRIMARY KEY (`idAlimento`),
 KEY `fkIdx_105` (`idPorcion`),
-CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `tipo_porcion` (`idPorcion`)
+CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `porcion` (`idPorcion`)
 );
 
 
@@ -256,3 +256,8 @@ CONSTRAINT `FK_71` FOREIGN KEY `fkIdx_71` (`idDieta`) REFERENCES `dieta` (`idDie
 KEY `fkIdx_78` (`idHorario`),
 CONSTRAINT `FK_78` FOREIGN KEY `fkIdx_78` (`idHorario`) REFERENCES `horario_dieta` (`idHorario`)
 );
+
+
+
+
+
