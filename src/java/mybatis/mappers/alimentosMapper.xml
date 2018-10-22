@@ -8,25 +8,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getAllAlimentos" resultType="POJOS.alimentos">
           SELECT 
           alimento.idAlimento,
-          alimento.nombre,
+          alimento.nombreAlimento,
           alimento.calorias,
-          alimento.porcion
+          alimento.idPorcion
           FROM alimento
     </select>
     
     <select id="getAlimentoById" resultType="POJOS.alimentos" parameterType="int">
         SELECT
         alimento.idAlimento,
-        alimento.nombre,
+        alimento.nombreAlimento,
         alimento.calorias,
-        alimento.porcion
+        alimento.idPorcion
         FROM alimento WHERE alimento.idAlimento = #{idAlimento}
     </select>
     
     <select id="getAlimentoByName" resultType="POJOS.alimentos" parameterType="String">
         SELECT 
         alimento.idAlimento,
-        alimento.nombre,
+        alimento.nombreAlimento,
         alimento.calorias,
         alimento.porcion
         FROM alimento WHERE alimento.nombre = #{nombre}
@@ -34,13 +34,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="nuevoAlimento" parameterType="POJOS.alimentos">
         INSERT INTO
-        alimento (idAlimento, nombre, calorias, porcion)
+        alimento (idAlimento, nombreAlimento, calorias, idPorcion)
         VALUES
-        (#{idAlimento}, #{nombre}, #{calorias}, #{porcion})
+        (#{idAlimento}, #{nombreAlimento}, #{calorias}, #{idPorcion})
     </insert>
     
     <update id="actualizarAlimento" parameterType="POJOS.alimentos">
-        UPDATE alimento SET nombre = #{nombre}, calorias = #{calorias}, porcion = #{porcion} WHERE idAlimento = #{idAlimento}
+        UPDATE alimento SET nombre = #{nombreAlimento}, calorias = #{calorias}, idPorcion = #{idPorcion} WHERE idAlimento = #{idAlimento}
     </update>
     
     <delete id="eliminarAlimento" parameterType="POJOS.alimentos">
