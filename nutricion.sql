@@ -39,7 +39,7 @@ DROP TABLE `medico`;
 
 CREATE TABLE `medidasConsulta`
 (
- `idMedicion` INTEGER NOT NULL ,
+ `idMedicion` INTEGER NOT NULL AUTO_INCREMENT ,
  `talla`      VARCHAR(45) NOT NULL ,
  `peso`       VARCHAR(45) NOT NULL ,
  `estatura`   VARCHAR(45) NOT NULL ,
@@ -57,7 +57,7 @@ PRIMARY KEY (`idMedicion`)
 
 CREATE TABLE `horario_dieta`
 (
- `idHorario`  INTEGER NOT NULL ,
+ `idHorario`  INTEGER NOT NULL AUTO_INCREMENT ,
  `horaComida` VARCHAR(45) NOT NULL ,
 
 PRIMARY KEY (`idHorario`)
@@ -72,7 +72,7 @@ PRIMARY KEY (`idHorario`)
 
 CREATE TABLE `tipo_porcion`
 (
- `idPorcion` INTEGER NOT NULL ,
+ `idPorcion` INTEGER NOT NULL AUTO_INCREMENT ,
  `Tipo`      VARCHAR(45) NOT NULL ,
 
 PRIMARY KEY (`idPorcion`)
@@ -87,7 +87,7 @@ PRIMARY KEY (`idPorcion`)
 
 CREATE TABLE `estatus`
 (
- `idEstatus` INTEGER NOT NULL ,
+ `idEstatus` INTEGER NOT NULL AUTO_INCREMENT ,
  `nombre`    VARCHAR(45) NOT NULL ,
 
 PRIMARY KEY (`idEstatus`)
@@ -102,7 +102,7 @@ PRIMARY KEY (`idEstatus`)
 
 CREATE TABLE `medico`
 (
- `idMedico`        INTEGER NOT NULL ,
+ `idMedico`        INTEGER NOT NULL AUTO_INCREMENT ,
  `nombre`          VARCHAR(45) NOT NULL ,
  `apellidoMaterno` VARCHAR(45) NOT NULL ,
  `apellidoPaterno` VARCHAR(45) NOT NULL ,
@@ -125,7 +125,7 @@ PRIMARY KEY (`idMedico`)
 
 CREATE TABLE `alimento`
 (
- `idAlimento`     INTEGER NOT NULL ,
+ `idAlimento`     INTEGER NOT NULL AUTO_INCREMENT ,
  `nombreAlimento` VARCHAR(45) NOT NULL ,
  `calorias`       DOUBLE NOT NULL ,
  `idPorcion`      INTEGER NOT NULL ,
@@ -144,7 +144,7 @@ CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `tipo_porci
 
 CREATE TABLE `paciente`
 (
- `idPaciente`      INTEGER NOT NULL ,
+ `idPaciente`      INTEGER NOT NULL AUTO_INCREMENT ,
  `nombre`          VARCHAR(45) NOT NULL ,
  `apellidoMaterno` VARCHAR(45) NOT NULL ,
  `apellidoPaterno` VARCHAR(45) NOT NULL ,
@@ -170,7 +170,7 @@ CONSTRAINT `FK_30` FOREIGN KEY `fkIdx_30` (`idEstatus`) REFERENCES `estatus` (`i
 
 CREATE TABLE `cita`
 (
- `idCita`     INTEGER NOT NULL ,
+ `idCita`     INTEGER NOT NULL AUTO_INCREMENT ,
  `idPaciente` INTEGER NOT NULL ,
  `idMedico`   INTEGER NOT NULL ,
  `fecha`      DATE NOT NULL ,
@@ -192,7 +192,7 @@ CONSTRAINT `FK_39` FOREIGN KEY `fkIdx_39` (`idMedico`) REFERENCES `medico` (`idM
 
 CREATE TABLE `dieta`
 (
- `idDieta`         INTEGER NOT NULL ,
+ `idDieta`         INTEGER NOT NULL AUTO_INCREMENT ,
  `nombreDieta`     VARCHAR(45) NOT NULL ,
  `totalCalorias`   DOUBLE NOT NULL ,
  `idMedico`        INTEGER NOT NULL ,
@@ -214,7 +214,7 @@ CONSTRAINT `FK_114` FOREIGN KEY `fkIdx_114` (`idDietaAlimento`) REFERENCES `diet
 
 CREATE TABLE `consulta`
 (
- `idConsulta`    INTEGER NOT NULL ,
+ `idConsulta`    INTEGER NOT NULL AUTO_INCREMENT ,
  `idPaciente`    INTEGER NOT NULL ,
  `idMedico`      INTEGER NOT NULL ,
  `idDieta`       INTEGER NOT NULL ,
@@ -242,9 +242,9 @@ CONSTRAINT `FK_102` FOREIGN KEY `fkIdx_102` (`idMedicion`) REFERENCES `medidasCo
 
 CREATE TABLE `dieta_alimento`
 (
- `idDietaAlimento` INTEGER NOT NULL ,
+ `idDietaAlimento` INTEGER NOT NULL AUTO_INCREMENT ,
  `idAlimento`      INTEGER NOT NULL ,
- `cantidad`         NOT NULL ,
+ `cantidad`        DOUBLE NOT NULL ,
  `idDieta`         INTEGER NOT NULL ,
  `idHorario`       INTEGER NOT NULL ,
 
@@ -256,8 +256,3 @@ CONSTRAINT `FK_71` FOREIGN KEY `fkIdx_71` (`idDieta`) REFERENCES `dieta` (`idDie
 KEY `fkIdx_78` (`idHorario`),
 CONSTRAINT `FK_78` FOREIGN KEY `fkIdx_78` (`idHorario`) REFERENCES `horario_dieta` (`idHorario`)
 );
-
-
-
-
-
