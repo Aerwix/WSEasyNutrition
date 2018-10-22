@@ -31,7 +31,7 @@ public class NutritionWS {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public alimentos getHolaMundo() {
-        alimentos al = new alimentos(1, "Prueba", 200, "1");
+        alimentos al = new alimentos(1, "Prueba", 200, 2);
         return al;
     }
     
