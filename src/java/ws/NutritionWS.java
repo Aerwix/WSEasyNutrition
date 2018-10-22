@@ -98,7 +98,7 @@ public class NutritionWS {
             @FormParam("idAlimento") Integer idAlimento,
             @FormParam("nombre") String nombre,
             @FormParam("calorias") double calorias,
-            @FormParam("porcion") String porcion){
+            @FormParam("porcion") Integer porcion){
         
         Mensaje resultado = null;
         alimentos  cat = new alimentos(idAlimento, nombre, calorias, porcion);
@@ -130,7 +130,7 @@ public class NutritionWS {
             @FormParam("idAlimento") Integer idAlimento,
             @FormParam("nombre") String nombre,
             @FormParam("calorias") double calorias,
-            @FormParam("porcion") String porcion){
+            @FormParam("porcion") Integer porcion){
     
         Mensaje resultado = null;
         alimentos cat = new alimentos(idAlimento, nombre, calorias, porcion);
