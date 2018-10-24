@@ -2,6 +2,7 @@ package ws;
 
 import POJOS.Mensaje;
 import POJOS.alimentos;
+import POJOS.citas;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -176,6 +177,122 @@ public class NutritionWS {
                 e.printStackTrace();
                 resultado = new Mensaje(false, e.getMessage());
             }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    // Servicio de Citas //
+    
+    @Path("nuevaCita")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje nuevaCita(
+            @FormParam("idCita") Integer idCita,
+            @FormParam("idPaciente") Integer idPaciente,
+            @FormParam("idMedico") Integer idMedico,
+            @FormParam("fecha") String fecha,
+            @FormParam("hora") String hora
+            ){
+        
+        Mensaje resultado = null;
+        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        SqlSession conn = MyBatisUtil.getSession();
+        if (conn != null) {
+            try {
+                int result = conn.insert("citas.nuevaCita", cat);
+                if (result == 1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Registrado correctamente");
+                } else {
+                    conn.rollback();
+                    resultado = new Mensaje(false, "No se pudo registrar");
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("actualizarCita")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje actualizaCita(
+            @FormParam("idCita") Integer idCita,
+            @FormParam("idPaciente") Integer idPaciente,
+            @FormParam("idMedico") Integer idMedico,
+            @FormParam("fecha") String fecha,
+            @FormParam("hora") String hora
+            ){
+    
+        Mensaje resultado = null;
+        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("citas.actualizarCita" , cat);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Cita modificada correctamente.");
+                }else{
+                    conn.rollback();//deshace la operación
+                    resultado = new Mensaje(false, "La cita no se pudo modificar");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("eliminarCita")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje eliminaCita(@FormParam("idCita") Integer idCita){
+    
+        Mensaje resultado = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("citas.eliminarCita", idCita);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Cita eliminada correctamente.");
+                }else{
+                    conn.rollback();
+                    resultado = new Mensaje(false, "La cita no se pudo eliminar");
+                }               
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("getCitasByMedico/{idMedico}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public citas getByIdMedico(@PathParam("idMedico") Integer idMedico){
+        citas resultado = new citas();
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if (conn != null ){
+            try {
+                resultado = conn.selectOne("citas.getCitasByMedico", idMedico);
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally {
                 conn.close();
             }
         }

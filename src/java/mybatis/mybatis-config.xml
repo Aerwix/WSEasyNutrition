@@ -26,5 +26,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     
     <mappers>
         <mapper resource="mybatis/mappers/alimentosMapper.xml" />
+        <mapper resource="mybatis/mappers/citasMapper.xml" />
     </mappers>
 </configuration>
