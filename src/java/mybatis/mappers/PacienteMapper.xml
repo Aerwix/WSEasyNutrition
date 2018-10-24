@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Paciente">
+    
+    <insert id="registrarPaciente" parameterType="POJOS.Paciente">
+        insert into paciente(nombre,apellidoPaterno,apellidoMaterno,direccion,correo,password,telefono,fechaNacimiento,sexo)
+        values(#{nombre},#{apellidoPaterno},
+        #{apellidoMaterno},
+        #{direccion},
+        #{correo},
+        #{password},
+        #{telefono},
+        #{fechaNacimiento},
+        #{sexo},
+        idEstatus=#{idEstatus})
+    </insert>
+    
+    <update id="actualizarPaciente" parameterType="POJOS.Paciente">
+        update paciente set nombre=#{nombre},
+        apellidoPaterno=#{apellidoPaterno},
+        apellidoMaterno=#{apellidoMaterno},
+        direccion=#{direccion},
+        correo=#{correo},
+        password=#{password},
+        telefono=#{telefono},
+        fechaNacimiento=#{fechaNacimiento},
+        sexo=#{sexo},
+        idEstatus=#{idEstatus}
+        where idPaciente = #{idPaciente}
+    </update>
+</mapper>
