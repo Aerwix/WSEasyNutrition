@@ -280,4 +280,22 @@ public class NutritionWS {
         return resultado;
     }
     
+    @Path("getCitasByMedico/{idMedico}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public citas getByIdMedico(@PathParam("idMedico") Integer idMedico){
+        citas resultado = new citas();
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if (conn != null ){
+            try {
+                resultado = conn.selectOne("citas.getCitasByMedico", idMedico);
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
 }

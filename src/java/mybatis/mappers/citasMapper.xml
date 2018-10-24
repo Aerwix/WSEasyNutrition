@@ -17,4 +17,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="eliminarCita" parameterType="POJOS.citas">
         DELETE FROM cita where idCita = #{idCita}
     </delete>
+    
+    
+    <select id="getCitasByMedico" resultType="POJOS.citas" parameterType="int">    
+        SELECT
+        cita.idCita,
+        cita.idPaciente,
+        cita.idMedico,
+        cita.fecha,
+        cita.hora
+        FROM cita WHERE idCita = #{idMedico}
+    </select>
 </mapper>
