@@ -42,5 +42,10 @@ Alimentos | Citas | Consultas |
 ### Servicios de Citas
    1. Servicio: _nuevaCita_
       1. Desc: Agrega una cita al registro.
-      2. URL: http://localhost:8084/WSEN/webresources/api/nuevoAlimento
+      2. URL: http://localhost:8084/WSEN/webresources/api/nuevaCita
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+   2. Servicio: _actualizarCita_
+      1. Desc: Modifica una cita, solicitando el idCita. (Posible modificación incluyendo la fecha + el id)
+      2. URL: http://localhost:8084/WSEN/webresources/api/actualizarAlimento
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
