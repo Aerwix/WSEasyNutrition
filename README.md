@@ -38,7 +38,8 @@ Alimentos | Citas | Consultas |
       1. Desc: Elimina un alimento del registro, utilizando como parametro el ID.
       2. URL: http://localhost:8084/WSEN/webresources/api/eliminarAlimento
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
-2. ### Servicios de Citas
+      
+### Servicios de Citas
    1. Servicio: _nuevaCita_
       1. Desc: Agrega una cita al registro.
       2. URL: http://localhost:8084/WSEN/webresources/api/nuevoAlimento
