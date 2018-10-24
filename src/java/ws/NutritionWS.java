@@ -253,4 +253,31 @@ public class NutritionWS {
         return resultado;
     }
     
+    @Path("eliminarCita")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje eliminaCita(@FormParam("idCita") Integer idCita){
+    
+        Mensaje resultado = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("citas.eliminarCita", idCita);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Cita eliminada correctamente.");
+                }else{
+                    conn.rollback();
+                    resultado = new Mensaje(false, "La cita no se pudo eliminar");
+                }               
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
 }

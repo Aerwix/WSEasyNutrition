@@ -13,4 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="actualizarCita" parameterType="POJOS.citas">
         UPDATE cita SET idPaciente = #{idPaciente}, idMedico = #{idMedico}, fecha = #{fecha}, hora = #{hora} WHERE idCita = #{idCita}
     </update>
+    
+    <delete id="eliminarCita" parameterType="POJOS.citas">
+        DELETE FROM cita where idCita = #{idCita}
+    </delete>
 </mapper>
