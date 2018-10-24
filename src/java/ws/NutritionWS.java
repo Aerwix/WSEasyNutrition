@@ -2,6 +2,7 @@ package ws;
 
 import POJOS.Mensaje;
 import POJOS.alimentos;
+import POJOS.citas;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -181,4 +182,41 @@ public class NutritionWS {
         }
         return resultado;
     }
+    
+    // Servicio de Citas //
+    
+    @Path("nuevaCita")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje nuevaCita(
+            @FormParam("idCita") Integer idCita,
+            @FormParam("idPaciente") Integer idPaciente,
+            @FormParam("idMedico") Integer idMedico,
+            @FormParam("fecha") String fecha,
+            @FormParam("hora") String hora
+            ){
+        
+        Mensaje resultado = null;
+        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        SqlSession conn = MyBatisUtil.getSession();
+        if (conn != null) {
+            try {
+                int result = conn.insert("citas.nuevaCita", cat);
+                if (result == 1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Registrado correctamente");
+                } else {
+                    conn.rollback();
+                    resultado = new Mensaje(false, "No se pudo registrar");
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
 }

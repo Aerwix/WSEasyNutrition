@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="citas">
     <insert id="nuevaCita" parameterType="POJOS.alimentos">
         INSERT INTO
-        cita (idCita, idPaciente, idMedico, fecha_hora, observaciones)
+        cita (idCita, idPaciente, idMedico, fecha, hora)
         VALUES
-        (#{idCita}, #{idPaciente}, #{idMedico}, #{fecha_hora}, #{observaciones})
+        (#{idCita}, #{idPaciente}, #{idMedico}, #{fecha}, #{hora})
     </insert>
 </mapper>
