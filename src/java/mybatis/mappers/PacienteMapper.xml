@@ -6,15 +6,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Paciente">
     
-    <insert id="registrarPaciente" parameterType="pojos.Paciente">
+    <insert id="registrarPaciente" parameterType="POJOS.Paciente">
         insert into paciente(nombre,apellidoPaterno,apellidoMaterno,direccion,correo,password,telefono,fechaNacimiento,sexo)
-        values(#{nombre},#{apellidoPaterno},#{apellidoMaterno},#{direccion},#{correo},#{password},#{telefono},#{fechaNacimiento},#{sexo})
-        
+        values(#{nombre},#{apellidoPaterno},
+        #{apellidoMaterno},
+        #{direccion},
+        #{correo},
+        #{password},
+        #{telefono},
+        #{fechaNacimiento},
+        #{sexo},
+        idEstatus=#{idEstatus})
     </insert>
     
-    <update id="actualizarpaciente" parameterType="pojos.Paciente">
-        update paciente set nombre=#{nombre},apellidoPaterno=#{apellidoPaterno},apellidoMaterno=#{apellidoMaterno},direccion=#{direccion},
-        correo=#{correo},password=#{password},telefono=#{telefono},fechaNacimiento=#{fechaNacimiento},sexo=#{sexo},idEstatus=#{idEstatus}
+    <update id="actualizarPaciente" parameterType="POJOS.Paciente">
+        update paciente set nombre=#{nombre},
+        apellidoPaterno=#{apellidoPaterno},
+        apellidoMaterno=#{apellidoMaterno},
+        direccion=#{direccion},
+        correo=#{correo},
+        password=#{password},
+        telefono=#{telefono},
+        fechaNacimiento=#{fechaNacimiento},
+        sexo=#{sexo},
+        idEstatus=#{idEstatus}
         where idPaciente = #{idPaciente}
     </update>
 </mapper>

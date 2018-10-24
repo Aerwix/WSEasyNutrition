@@ -366,10 +366,10 @@ public class NutritionWS {
                  int result = conn.update("Paciente.actualizarPaciente", cat);
                  if(result ==1){
                       conn.commit();//commit confirma la operacion que si la haga
-                      resultado = new Mensaje(false, "Cliente actualizado correctamente");
+                      resultado = new Mensaje(false, "El paciente se ha actualizado correctamente");
                  }else{
                      conn.rollback();
-                     resultado = new Mensaje(true, "El cliente No se pudo actualizar");
+                     resultado = new Mensaje(true, "El paciente No se pudo actualizar");
                      
                  }
                  
