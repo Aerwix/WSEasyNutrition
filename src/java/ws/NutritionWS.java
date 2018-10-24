@@ -219,4 +219,38 @@ public class NutritionWS {
         return resultado;
     }
     
+    @Path("actualizarCita")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje actualizaCita(
+            @FormParam("idCita") Integer idCita,
+            @FormParam("idPaciente") Integer idPaciente,
+            @FormParam("idMedico") Integer idMedico,
+            @FormParam("fecha") String fecha,
+            @FormParam("hora") String hora
+            ){
+    
+        Mensaje resultado = null;
+        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("citas.actualizarCita" , cat);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Cita modificada correctamente.");
+                }else{
+                    conn.rollback();//deshace la operación
+                    resultado = new Mensaje(false, "La cita no se pudo modificar");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
 }
