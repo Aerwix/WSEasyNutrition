@@ -5,7 +5,7 @@ Acuerdense de cambiar el puerto en las URLs.
 ## Total de Servicios
 Alimentos | Citas | Consultas |
 --------- | ----- | ----------|
-1         |   0   |     0     |
+6         |   1   |     0     |
 
 ## Lista de Servicios Creados
 ### Servicio de Alimentos
