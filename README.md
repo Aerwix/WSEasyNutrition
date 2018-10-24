@@ -7,13 +7,8 @@ Alimentos | Citas | Consultas |
 --------- | ----- | ----------|
 1         |   0   |     0     |
 
-## Nomenclatura para UI
-*Label = lb
-*TextField = txtNombreAcción
-*Button = btnNombreAcción
 ## Lista de Servicios Creados
-### Ya hecho
-1. 
+### Servicio de Alimentos
    1. 
       1. Servicio: _getAllAlimentos_
       1. Desc: Recupera todos los alimentos de la base de datos.
@@ -39,11 +34,11 @@ Alimentos | Citas | Consultas |
       2. URL: http://localhost:8084/WSEN/webresources/api/actualizarAlimento
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
 
-   5. Servicio: _eliminarAlimento_
+   6. Servicio: _eliminarAlimento_
       1. Desc: Elimina un alimento del registro, utilizando como parametro el ID.
       2. URL: http://localhost:8084/WSEN/webresources/api/eliminarAlimento
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
-2.
+2. ### Servicios de Citas
    1. Servicio: _nuevaCita_
       1. Desc: Agrega una cita al registro.
       2. URL: http://localhost:8084/WSEN/webresources/api/nuevoAlimento
