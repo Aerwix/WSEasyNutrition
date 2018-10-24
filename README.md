@@ -49,3 +49,8 @@ Alimentos | Citas | Consultas |
       1. Desc: Modifica una cita, solicitando el idCita. (Posible modificación incluyendo la fecha + el id)
       2. URL: http://localhost:8084/WSEN/webresources/api/actualizarAlimento
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+
+   3. Servicio: _eliminarCita_
+      1. Desc: Elimina una cita del registro, utilizando como parametro el idCita.
+      2. URL: http://localhost:8084/WSEN/webresources/api/eliminarAlimento
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
