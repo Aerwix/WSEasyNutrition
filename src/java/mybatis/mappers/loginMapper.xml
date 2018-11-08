@@ -4,5 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="login">
-   
+    <select id="LoginMedico" resultType="POJOS.Medicos" parameterType="POJOS.Medicos">
+        SELECT
+        medico.idMedico,
+        medico.nombre,
+        medico.apellidoMaterno,
+        medico.apellidoPaterno,
+        medico.direccion,
+        medico.correo,
+        medico.telefono,
+        medico.fechaNacimiento,
+        medico.sexo
+        FROM medico WHERE medico.correo = #{correo} AND medico.password = #{password}
+    </select>
 </mapper>

@@ -1,13 +1,20 @@
 package ws;
 
+import POJOS.Medicos;
+import POJOS.Mensaje;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import mybatis.MyBatisUtil;
+import org.apache.ibatis.session.SqlSession;
 
-@Path("login")
+@Path("auth")
 public class LoginWS {
     @Context
     private UriInfo context;
@@ -21,5 +28,28 @@ public class LoginWS {
     public String getHolaMundo() {
         //alimentos al = new alimentos(1, "Prueba", 200, 2);
         return "Hola Login" ;
+    }
+    
+    @Path("LoginParaMedico")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje LoginParaMedico(
+            @FormParam("correo") String correo,
+            @FormParam("password") String password
+    ){
+    
+        Mensaje resultado = null;
+        Medicos cat = new Medicos(correo, password);
+        SqlSession conn = MyBatisUtil.getSession();
+        if (conn != null ){
+            try {
+                resultado = conn.selectOne("login.LoginMedico", cat);
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
     }
 }
