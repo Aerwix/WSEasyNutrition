@@ -1,96 +1,14 @@
 -- ****************** SqlDBM: MySQL ******************;
 -- ***************************************************;
 
-DROP TABLE `consulta`;
-
-
-DROP TABLE `dieta_alimento`;
-
-
-DROP TABLE `dieta`;
-
-
-DROP TABLE `cita`;
-
-
-DROP TABLE `alimento`;
-
-
-DROP TABLE `paciente`;
-
-
-DROP TABLE `medidasConsulta`;
-
-
-DROP TABLE `horario_dieta`;
-
-
-DROP TABLE `porcion`;
-
-
-DROP TABLE `estatus`;
-
-
-DROP TABLE `medico`;
-
-
-
--- ************************************** `medidasConsulta`
-
-CREATE TABLE `medidasConsulta`
-(
- `idMedicion` INTEGER NOT NULL AUTO_INCREMENT ,
- `talla`      VARCHAR(45) NOT NULL ,
- `peso`       VARCHAR(45) NOT NULL ,
- `estatura`   VARCHAR(45) NOT NULL ,
- `imc`        VARCHAR(45) NOT NULL ,
-
-PRIMARY KEY (`idMedicion`)
-);
-
-
-
-
-
-
--- ************************************** `horario_dieta`
-
-CREATE TABLE `horario_dieta`
-(
- `idHorario`  INTEGER NOT NULL AUTO_INCREMENT ,
- `horaComida` VARCHAR(45) NOT NULL ,
-
-PRIMARY KEY (`idHorario`)
-);
-
-
-
-
-
 
 -- ************************************** `porcion`
 
 CREATE TABLE `porcion`
 (
- `idPorcion` INTEGER NOT NULL AUTO_INCREMENT ,
- `Tipo`      VARCHAR(45) NOT NULL ,
-
+ `idPorcion` integer NOT NULL AUTO_INCREMENT ,
+ `Tipo`      varchar(45) NOT NULL ,
 PRIMARY KEY (`idPorcion`)
-);
-
-
-
-
-
-
--- ************************************** `estatus`
-
-CREATE TABLE `estatus`
-(
- `idEstatus` INTEGER NOT NULL AUTO_INCREMENT ,
- `nombre`    VARCHAR(45) NOT NULL ,
-
-PRIMARY KEY (`idEstatus`)
 );
 
 
@@ -102,17 +20,16 @@ PRIMARY KEY (`idEstatus`)
 
 CREATE TABLE `medico`
 (
- `idMedico`        INTEGER NOT NULL AUTO_INCREMENT ,
- `nombre`          VARCHAR(45) NOT NULL ,
- `apellidoMaterno` VARCHAR(45) NOT NULL ,
- `apellidoPaterno` VARCHAR(45) NOT NULL ,
- `direccion`       VARCHAR(100) NOT NULL ,
- `correo`          VARCHAR(45) NOT NULL ,
- `password`        VARCHAR(45) NOT NULL ,
- `telefono`        VARCHAR(45) NOT NULL ,
- `fechaNacimiento` DATE NOT NULL ,
- `sexo`            VARCHAR(45) NOT NULL ,
-
+ `idMedico`        integer NOT NULL AUTO_INCREMENT ,
+ `nombre`          varchar(45) NOT NULL ,
+ `apellidoMaterno` varchar(45) NOT NULL ,
+ `apellidoPaterno` varchar(45) NOT NULL ,
+ `direccion`       varchar(100) NOT NULL ,
+ `correo`          varchar(45) NOT NULL ,
+ `password`        varchar(45) NOT NULL ,
+ `telefono`        varchar(45) NOT NULL ,
+ `fechaNacimiento` date NOT NULL ,
+ `sexo`            varchar(45) NOT NULL ,
 PRIMARY KEY (`idMedico`)
 );
 
@@ -121,18 +38,27 @@ PRIMARY KEY (`idMedico`)
 
 
 
--- ************************************** `alimento`
+-- ************************************** `horario_dieta`
 
-CREATE TABLE `alimento`
+CREATE TABLE `horario_dieta`
 (
- `idAlimento`     INTEGER NOT NULL AUTO_INCREMENT ,
- `nombreAlimento` VARCHAR(45) NOT NULL ,
- `calorias`       DOUBLE NOT NULL ,
- `idPorcion`      INTEGER NOT NULL ,
+ `idHorario`  integer NOT NULL AUTO_INCREMENT ,
+ `horaComida` varchar(45) NOT NULL ,
+PRIMARY KEY (`idHorario`)
+);
 
-PRIMARY KEY (`idAlimento`),
-KEY `fkIdx_105` (`idPorcion`),
-CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `porcion` (`idPorcion`)
+
+
+
+
+
+-- ************************************** `estatus`
+
+CREATE TABLE `estatus`
+(
+ `idEstatus` integer NOT NULL AUTO_INCREMENT ,
+ `nombre`    varchar(45) NOT NULL ,
+PRIMARY KEY (`idEstatus`)
 );
 
 
@@ -144,21 +70,103 @@ CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `porcion` (
 
 CREATE TABLE `paciente`
 (
- `idPaciente`      INTEGER NOT NULL AUTO_INCREMENT ,
- `nombre`          VARCHAR(45) NOT NULL ,
- `apellidoMaterno` VARCHAR(45) NOT NULL ,
- `apellidoPaterno` VARCHAR(45) NOT NULL ,
- `direccion`       VARCHAR(100) NOT NULL ,
- `correo`          VARCHAR(45) NOT NULL ,
- `password`        VARCHAR(45) NOT NULL ,
- `telefono`        VARCHAR(45) NOT NULL ,
- `fechaNacimiento` DATE NOT NULL ,
- `sexo`            VARCHAR(45) NOT NULL ,
- `idEstatus`       INTEGER NOT NULL ,
-
+ `idPaciente`      integer NOT NULL AUTO_INCREMENT ,
+ `nombre`          varchar(45) NOT NULL ,
+ `apellidoMaterno` varchar(45) NOT NULL ,
+ `apellidoPaterno` varchar(45) NOT NULL ,
+ `direccion`       varchar(100) NOT NULL ,
+ `correo`          varchar(45) NOT NULL ,
+ `password`        varchar(45) NOT NULL ,
+ `telefono`        varchar(45) NOT NULL ,
+ `fechaNacimiento` date NOT NULL ,
+ `sexo`            varchar(45) NOT NULL ,
+ `idEstatus`       integer NOT NULL ,
 PRIMARY KEY (`idPaciente`),
 KEY `fkIdx_30` (`idEstatus`),
 CONSTRAINT `FK_30` FOREIGN KEY `fkIdx_30` (`idEstatus`) REFERENCES `estatus` (`idEstatus`)
+);
+
+
+
+
+
+
+-- ************************************** `dieta`
+
+CREATE TABLE `dieta`
+(
+ `idDieta`       integer NOT NULL AUTO_INCREMENT ,
+ `nombreDieta`   varchar(45) NOT NULL ,
+ `totalCalorias` double NOT NULL ,
+ `idMedico`      integer NOT NULL ,
+PRIMARY KEY (`idDieta`),
+KEY `fkIdx_108` (`idMedico`),
+CONSTRAINT `FK_108` FOREIGN KEY `fkIdx_108` (`idMedico`) REFERENCES `medico` (`idMedico`)
+);
+
+
+
+
+
+
+-- ************************************** `alimento`
+
+CREATE TABLE `alimento`
+(
+ `idAlimento`     integer NOT NULL AUTO_INCREMENT ,
+ `nombreAlimento` varchar(45) NOT NULL ,
+ `calorias`       double NOT NULL ,
+ `idPorcion`      integer NOT NULL ,
+PRIMARY KEY (`idAlimento`),
+KEY `fkIdx_105` (`idPorcion`),
+CONSTRAINT `FK_105` FOREIGN KEY `fkIdx_105` (`idPorcion`) REFERENCES `porcion` (`idPorcion`)
+);
+
+
+
+
+
+
+-- ************************************** `dieta_alimento`
+
+CREATE TABLE `dieta_alimento`
+(
+ `idDietaAlimento` integer NOT NULL AUTO_INCREMENT ,
+ `idAlimento`      integer NOT NULL ,
+ `cantidad`        double NOT NULL ,
+ `idDieta`         integer NOT NULL ,
+ `idHorario`       integer NOT NULL ,
+PRIMARY KEY (`idDietaAlimento`),
+KEY `fkIdx_57` (`idAlimento`),
+CONSTRAINT `FK_57` FOREIGN KEY `fkIdx_57` (`idAlimento`) REFERENCES `alimento` (`idAlimento`),
+KEY `fkIdx_71` (`idDieta`),
+CONSTRAINT `FK_71` FOREIGN KEY `fkIdx_71` (`idDieta`) REFERENCES `dieta` (`idDieta`),
+KEY `fkIdx_78` (`idHorario`),
+CONSTRAINT `FK_78` FOREIGN KEY `fkIdx_78` (`idHorario`) REFERENCES `horario_dieta` (`idHorario`)
+);
+
+
+
+
+
+
+-- ************************************** `consulta`
+
+CREATE TABLE `consulta`
+(
+ `idConsulta`    integer NOT NULL AUTO_INCREMENT ,
+ `idPaciente`    integer NOT NULL ,
+ `idMedico`      integer NOT NULL ,
+ `idDieta`       integer NOT NULL ,
+ `observaciones` varchar(100) NOT NULL ,
+ `fechaConsulta` date NOT NULL ,
+PRIMARY KEY (`idConsulta`),
+KEY `fkIdx_84` (`idPaciente`),
+CONSTRAINT `FK_84` FOREIGN KEY `fkIdx_84` (`idPaciente`) REFERENCES `paciente` (`idPaciente`),
+KEY `fkIdx_87` (`idMedico`),
+CONSTRAINT `FK_87` FOREIGN KEY `fkIdx_87` (`idMedico`) REFERENCES `medico` (`idMedico`),
+KEY `fkIdx_90` (`idDieta`),
+CONSTRAINT `FK_90` FOREIGN KEY `fkIdx_90` (`idDieta`) REFERENCES `dieta` (`idDieta`)
 );
 
 
@@ -170,12 +178,11 @@ CONSTRAINT `FK_30` FOREIGN KEY `fkIdx_30` (`idEstatus`) REFERENCES `estatus` (`i
 
 CREATE TABLE `cita`
 (
- `idCita`     INTEGER NOT NULL AUTO_INCREMENT ,
- `idPaciente` INTEGER NOT NULL ,
- `idMedico`   INTEGER NOT NULL ,
- `fecha`      DATE NOT NULL ,
- `hora`       VARCHAR(45) NOT NULL ,
-
+ `idCita`     integer NOT NULL AUTO_INCREMENT ,
+ `idPaciente` integer NOT NULL ,
+ `idMedico`   integer NOT NULL ,
+ `fecha`      date NOT NULL ,
+ `hora`       varchar(45) NOT NULL ,
 PRIMARY KEY (`idCita`),
 KEY `fkIdx_36` (`idPaciente`),
 CONSTRAINT `FK_36` FOREIGN KEY `fkIdx_36` (`idPaciente`) REFERENCES `paciente` (`idPaciente`),
@@ -188,73 +195,19 @@ CONSTRAINT `FK_39` FOREIGN KEY `fkIdx_39` (`idMedico`) REFERENCES `medico` (`idM
 
 
 
--- ************************************** `dieta`
+-- ************************************** `medidasConsulta`
 
-CREATE TABLE `dieta`
+CREATE TABLE `medidasConsulta`
 (
- `idDieta`         INTEGER NOT NULL AUTO_INCREMENT ,
- `nombreDieta`     VARCHAR(45) NOT NULL ,
- `totalCalorias`   DOUBLE NOT NULL ,
- `idMedico`        INTEGER NOT NULL ,
- `idDietaAlimento` INTEGER NOT NULL ,
-
-PRIMARY KEY (`idDieta`),
-KEY `fkIdx_108` (`idMedico`),
-CONSTRAINT `FK_108` FOREIGN KEY `fkIdx_108` (`idMedico`) REFERENCES `medico` (`idMedico`),
-KEY `fkIdx_114` (`idDietaAlimento`),
-CONSTRAINT `FK_114` FOREIGN KEY `fkIdx_114` (`idDietaAlimento`) REFERENCES `dieta_alimento` (`idDietaAlimento`)
-);
-
-
-
-
-
-
--- ************************************** `consulta`
-
-CREATE TABLE `consulta`
-(
- `idConsulta`    INTEGER NOT NULL AUTO_INCREMENT ,
- `idPaciente`    INTEGER NOT NULL ,
- `idMedico`      INTEGER NOT NULL ,
- `idDieta`       INTEGER NOT NULL ,
- `observaciones` VARCHAR(100) NOT NULL ,
- `fechaConsulta` DATE NOT NULL ,
- `idMedicion`    INTEGER NOT NULL ,
-
-PRIMARY KEY (`idConsulta`),
-KEY `fkIdx_84` (`idPaciente`),
-CONSTRAINT `FK_84` FOREIGN KEY `fkIdx_84` (`idPaciente`) REFERENCES `paciente` (`idPaciente`),
-KEY `fkIdx_87` (`idMedico`),
-CONSTRAINT `FK_87` FOREIGN KEY `fkIdx_87` (`idMedico`) REFERENCES `medico` (`idMedico`),
-KEY `fkIdx_90` (`idDieta`),
-CONSTRAINT `FK_90` FOREIGN KEY `fkIdx_90` (`idDieta`) REFERENCES `dieta` (`idDieta`),
-KEY `fkIdx_102` (`idMedicion`),
-CONSTRAINT `FK_102` FOREIGN KEY `fkIdx_102` (`idMedicion`) REFERENCES `medidasConsulta` (`idMedicion`)
-);
-
-
-
-
-
-
--- ************************************** `dieta_alimento`
-
-CREATE TABLE `dieta_alimento`
-(
- `idDietaAlimento` INTEGER NOT NULL AUTO_INCREMENT ,
- `idAlimento`      INTEGER NOT NULL ,
- `cantidad`        DOUBLE NOT NULL ,
- `idDieta`         INTEGER NOT NULL ,
- `idHorario`       INTEGER NOT NULL ,
-
-PRIMARY KEY (`idDietaAlimento`),
-KEY `fkIdx_57` (`idAlimento`),
-CONSTRAINT `FK_57` FOREIGN KEY `fkIdx_57` (`idAlimento`) REFERENCES `alimento` (`idAlimento`),
-KEY `fkIdx_71` (`idDieta`),
-CONSTRAINT `FK_71` FOREIGN KEY `fkIdx_71` (`idDieta`) REFERENCES `dieta` (`idDieta`),
-KEY `fkIdx_78` (`idHorario`),
-CONSTRAINT `FK_78` FOREIGN KEY `fkIdx_78` (`idHorario`) REFERENCES `horario_dieta` (`idHorario`)
+ `idMedicion` integer NOT NULL AUTO_INCREMENT ,
+ `talla`      varchar(45) NOT NULL ,
+ `peso`       varchar(45) NOT NULL ,
+ `estatura`   varchar(45) NOT NULL ,
+ `imc`        varchar(45) NOT NULL ,
+ `idConsulta` integer NOT NULL ,
+PRIMARY KEY (`idMedicion`),
+KEY `fkIdx_117` (`idConsulta`),
+CONSTRAINT `FK_117` FOREIGN KEY `fkIdx_117` (`idConsulta`) REFERENCES `consulta` (`idConsulta`)
 );
 
 
