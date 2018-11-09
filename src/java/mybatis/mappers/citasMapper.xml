@@ -26,6 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         cita.idMedico,
         cita.fecha,
         cita.hora
-        FROM cita WHERE idCita = #{idMedico}
+        FROM cita WHERE cita.idMedico = #{idMedico}
     </select>
 </mapper>
