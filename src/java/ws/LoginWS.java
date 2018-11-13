@@ -30,7 +30,7 @@ public class LoginWS {
         return "Hola Login" ;
     }
     
-    @Path("LoginParaMedico")
+    @Path("LoginMedico")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Medicos LoginParaMedico(
