@@ -3,16 +3,22 @@
 Acuerdense de cambiar el puerto en las URLs.
 
 ## Total de Servicios
-Alimentos | Citas | Consultas |
---------- | ----- | ----------|
-6         |   2   |     0     |
+Alimentos | Citas | Consultas | Login |
+--------- | ----- | ----------| ----- |
+6         |   2   |     0     |   1   |
 
 ## Lista de Servicios Creados
+
+### Login de Usuarios
+      1. Servicio: _LoginParaMedico_
+      2. Desc: Recupera todos los datos de un usuario si es correcto.
+      3. URL: http://localhost:8084/WSEN/webresources/auth/LoginMedico
+
 ### Servicio de Alimentos
    1. 
       1. Servicio: _getAllAlimentos_
-      1. Desc: Recupera todos los alimentos de la base de datos.
-      2. URL: http://localhost:8084/WSEN/webresources/api/getAllAlimentos
+      2. Desc: Recupera todos los alimentos de la base de datos.
+      3. URL: http://localhost:8084/WSEN/webresources/api/getAllAlimentos
       
    2. Servicio: _getAlimentoById_
       1. Desc: Recupera 1 solo alimento por el ID.
