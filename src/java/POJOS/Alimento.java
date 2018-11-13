@@ -1,15 +1,15 @@
 package POJOS;
 
-public class alimentos {
+public class Alimento {
     private Integer idAlimento;
     private String nombreAlimento;
     private double calorias;
     private Integer idPorcion;
 
-    public alimentos() {
+    public Alimento() {
     }
 
-    public alimentos(Integer idAlimento, String nombreAlimento, double calorias, Integer idPorcion) {
+    public Alimento(Integer idAlimento, String nombreAlimento, double calorias, Integer idPorcion) {
         this.idAlimento = idAlimento;
         this.nombreAlimento = nombreAlimento;
         this.calorias = calorias;

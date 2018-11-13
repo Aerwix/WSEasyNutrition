@@ -1,16 +1,16 @@
 package POJOS;
 
-public class citas {
+public class Cita {
     private Integer idCita;
     private Integer idPaciente;
     private Integer idMedico;
     private String fecha;
     private String hora;
 
-    public citas() {
+    public Cita() {
     }
 
-    public citas(Integer idCita, Integer idPaciente, Integer idMedico, String fecha, String hora) {
+    public Cita(Integer idCita, Integer idPaciente, Integer idMedico, String fecha, String hora) {
         this.idCita = idCita;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;

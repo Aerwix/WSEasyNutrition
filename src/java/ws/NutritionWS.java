@@ -2,8 +2,8 @@ package ws;
 
 import POJOS.Mensaje;
 import POJOS.Paciente;
-import POJOS.alimentos;
-import POJOS.citas;
+import POJOS.Alimento;
+import POJOS.Cita;
 import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -32,16 +32,16 @@ public class NutritionWS {
     @Path("prueba")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public alimentos getHolaMundo() {
-        alimentos al = new alimentos(1, "Prueba", 200, 2);
+    public Alimento getHolaMundo() {
+        Alimento al = new Alimento(1, "Prueba", 200, 2);
         return al;
     }
     
     @Path("getAllAlimentos")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<alimentos> getAllAlimentos(){
-        List<alimentos> list = null;
+    public List<Alimento> getAllAlimentos(){
+        List<Alimento> list = null;
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null){
             try{
@@ -58,8 +58,8 @@ public class NutritionWS {
     @Path("getAlimentoById/{idAlimento}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public alimentos getById(@PathParam("idAlimento") Integer idAlimento){
-        alimentos resultado = new alimentos();
+    public Alimento getById(@PathParam("idAlimento") Integer idAlimento){
+        Alimento resultado = new Alimento();
         SqlSession conn = MyBatisUtil.getSession();
         
         if (conn != null ){
@@ -77,8 +77,8 @@ public class NutritionWS {
     @Path("getAlimentoByName/{nombre}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public alimentos getByName(@PathParam("nombre") String nombre){
-        alimentos resultado = new alimentos();
+    public Alimento getByName(@PathParam("nombre") String nombre){
+        Alimento resultado = new Alimento();
         SqlSession conn = MyBatisUtil.getSession();
         
         if (conn != null ){
@@ -103,7 +103,7 @@ public class NutritionWS {
             @FormParam("porcion") Integer porcion){
         
         Mensaje resultado = null;
-        alimentos  cat = new alimentos(idAlimento, nombre, calorias, porcion);
+        Alimento  cat = new Alimento(idAlimento, nombre, calorias, porcion);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
@@ -135,7 +135,7 @@ public class NutritionWS {
             @FormParam("porcion") Integer porcion){
     
         Mensaje resultado = null;
-        alimentos cat = new alimentos(idAlimento, nombre, calorias, porcion);
+        Alimento cat = new Alimento(idAlimento, nombre, calorias, porcion);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn !=null){
             try {
@@ -198,7 +198,7 @@ public class NutritionWS {
             ){
         
         Mensaje resultado = null;
-        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        Cita  cat = new Cita(idCita, idPaciente, idMedico, fecha, hora);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
@@ -232,7 +232,7 @@ public class NutritionWS {
             ){
     
         Mensaje resultado = null;
-        citas  cat = new citas(idCita, idPaciente, idMedico, fecha, hora);
+        Cita  cat = new Cita(idCita, idPaciente, idMedico, fecha, hora);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn !=null){
             try {
@@ -284,8 +284,8 @@ public class NutritionWS {
     @Path("getCitasByMedico/{idMedico}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public citas getByIdMedico(@PathParam("idMedico") Integer idMedico){
-        citas resultado = new citas();
+    public Cita getByIdMedico(@PathParam("idMedico") Integer idMedico){
+        Cita resultado = new Cita();
         SqlSession conn = MyBatisUtil.getSession();
         
         if (conn != null ){
