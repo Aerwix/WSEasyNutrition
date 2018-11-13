@@ -24,7 +24,7 @@ Alimentos | Citas | Consultas | Login |
    2. Servicio: _getAlimentoById_
       1. Desc: Recupera 1 solo alimento por el ID.
       2. URL: http://localhost:8084/WSEN/webresources/api/getAlimentoById/idAlimento
-      3. URL: http://localhost:8084/WSEN/webresources/api/getAlimentoById/2
+      3. Ej: http://localhost:8084/WSEN/webresources/api/getAlimentoById/2
 
    3. Servicio: _getAlimentoByName_
       1. Desc: Recupera 1 solo alimento por el nombre.
