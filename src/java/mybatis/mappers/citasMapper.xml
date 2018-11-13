@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="citas">
+    <insert id="nuevaCita" parameterType="POJOS.Cita">
+        INSERT INTO
+        cita (idCita, idPaciente, idMedico, fecha, hora)
+        VALUES
+        (#{idCita}, #{idPaciente}, #{idMedico}, #{fecha}, #{hora})
+    </insert>
+    <update id="actualizarCita" parameterType="POJOS.Cita">
+        UPDATE cita SET idPaciente = #{idPaciente}, idMedico = #{idMedico}, fecha = #{fecha}, hora = #{hora} WHERE idCita = #{idCita}
+    </update>
+    
+    <delete id="eliminarCita" parameterType="POJOS.Cita">
+        DELETE FROM cita where idCita = #{idCita}
+    </delete>
+    
+    
+    <select id="getCitasByMedico" resultType="POJOS.Cita" parameterType="int">    
+        SELECT
+        cita.idCita,
+        cita.idPaciente,
+        cita.idMedico,
+        cita.fecha,
+        cita.hora
+        FROM cita WHERE cita.idMedico = #{idMedico}
+    </select>
+</mapper>

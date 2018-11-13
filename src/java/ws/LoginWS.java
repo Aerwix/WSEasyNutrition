@@ -22,14 +22,6 @@ public class LoginWS {
     public LoginWS(){
     }
     
-    @Path("pruebaLogin")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getHolaMundo() {
-        //alimentos al = new alimentos(1, "Prueba", 200, 2);
-        return "Hola Login" ;
-    }
-    
     @Path("LoginMedico")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
