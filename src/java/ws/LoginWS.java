@@ -33,23 +33,21 @@ public class LoginWS {
     @Path("LoginParaMedico")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Mensaje LoginParaMedico(
+    public Medicos LoginParaMedico(
             @FormParam("correo") String correo,
             @FormParam("password") String password
     ){
-    
-        Mensaje resultado = null;
-        Medicos cat = new Medicos(correo, password);
-        SqlSession conn = MyBatisUtil.getSession();
-        if (conn != null ){
-            try {
-                resultado = conn.selectOne("login.LoginMedico", cat);
-            } catch (Exception e){
-                e.printStackTrace();
-            } finally {
-                conn.close();
-            }
-        }
-        return resultado;
+     Medicos resultado = new Medicos(correo, password);
+     SqlSession conn = MyBatisUtil.getSession();
+     if (conn != null){
+         try {
+             resultado = conn.selectOne("login.Medico", resultado);
+         } catch(Exception e) {
+             e.printStackTrace();
+         } finally {
+             conn.close();
+         }
+     }
+     return resultado;
     }
 }
