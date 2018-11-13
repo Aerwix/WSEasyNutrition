@@ -1,7 +1,7 @@
 package POJOS;
 
 
-public class Medicos {
+public class Medico {
     private Integer idMedico;
     private String nombre;
     private String apellidoMaterno;
@@ -13,7 +13,7 @@ public class Medicos {
     private String fechaNacimiento;
     private String sexo;
 
-    public Medicos(Integer idMedico, String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String correo, String password, String telefono, String fechaNacimiento, String sexo) {
+    public Medico(Integer idMedico, String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String correo, String password, String telefono, String fechaNacimiento, String sexo) {
         this.idMedico = idMedico;
         this.nombre = nombre;
         this.apellidoMaterno = apellidoMaterno;
@@ -26,13 +26,13 @@ public class Medicos {
         this.sexo = sexo;
     }
 
-    public Medicos(String correo, String password) {
+    public Medico(String correo, String password) {
         this.correo = correo;
         this.password = password;
     }
 
 
-    public Medicos() {
+    public Medico() {
     }
 
     public Integer getIdMedico() {

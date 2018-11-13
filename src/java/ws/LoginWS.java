@@ -1,12 +1,10 @@
 package ws;
 
-import POJOS.Medicos;
-import POJOS.Mensaje;
+import POJOS.Medico;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -33,11 +31,11 @@ public class LoginWS {
     @Path("LoginMedico")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Medicos LoginParaMedico(
+    public Medico LoginParaMedico(
             @FormParam("correo") String correo,
             @FormParam("password") String password
     ){
-     Medicos resultado = new Medicos(correo, password);
+     Medico resultado = new Medico(correo, password);
      SqlSession conn = MyBatisUtil.getSession();
      if (conn != null){
          try {
