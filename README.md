@@ -10,6 +10,7 @@ Alimentos | Citas | Consultas | Login |
 ## Lista de Servicios Creados
 
 ### Login de Usuarios
+   1. 
       1. Servicio: _LoginParaMedico_
       2. Desc: Recupera todos los datos de un usuario si es correcto.
       3. URL: http://localhost:8084/WSEN/webresources/auth/LoginMedico
