@@ -11,7 +11,7 @@ Alimentos | Citas | Consultas | Login |
 
 ### Login de Usuarios
    1. 
-      1. Servicio: _LoginParaMedico_
+      1. Servicio: _LoginMedico_
       2. Desc: Recupera todos los datos de un usuario si es correcto.
       3. URL: http://localhost:8084/WSEN/webresources/auth/LoginMedico
 
