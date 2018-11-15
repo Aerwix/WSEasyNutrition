@@ -5,7 +5,7 @@ Acuerdense de cambiar el puerto en las URLs.
 ## Total de Servicios
 Alimentos | Citas | Consultas | Login |
 --------- | ----- | ----------| ----- |
-6         |   2   |     0     |   1   |
+6         |   2   |     0     |   2   |
 
 ## Lista de Servicios Creados
 
@@ -70,4 +70,15 @@ Alimentos | Citas | Consultas | Login |
    4. Servicio: _getCitasByMedico_
       1. Desc: Devuelve una lista de citas de un Médico.
       2. URL: http://localhost:8084/WSEN/api/citas/getCitasByMedico
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+### Servicio de Consultas
+   1. Servicio: _nuevaConsulta_
+      1. Desc: Agrega una consulta al registro.
+      2. URL: http://localhost:8084/WSEN/api/consultas/nuevaConsulta
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+   
+   2. Servicio: _actualizarConsulta_
+      1. Desc: Modifica una consulta, solicitando el idConsulta.
+      2. URL: http://localhost:8084/WSEN/api/consultas/actualizarConsulta
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
