@@ -66,3 +66,8 @@ Alimentos | Citas | Consultas | Login |
       1. Desc: Elimina una cita del registro, utilizando como parametro el idCita.
       2. URL: http://localhost:8084/WSEN/api/citas/eliminarCita
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+   4. Servicio: _getCitasByMedico_
+      1. Desc: Devuelve una lista de citas de un Médico.
+      2. URL: http://localhost:8084/WSEN/api/citas/getCitasByMedico
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
