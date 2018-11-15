@@ -5,7 +5,7 @@ Acuerdense de cambiar el puerto en las URLs.
 ## Total de Servicios
 Alimentos | Citas | Consultas | Login |
 --------- | ----- | ----------| ----- |
-6         |   2   |     0     |   2   |
+6         |   2   |     3     |   2   |
 
 ## Lista de Servicios Creados
 
