@@ -13,7 +13,12 @@ Alimentos | Citas | Consultas | Login |
    1. 
       1. Servicio: _LoginMedico_
       2. Desc: Recupera todos los datos de un usuario si es correcto.
-      3. URL: http://localhost:8084/WSEN/cambiarPorOtro/auth/LoginMedico
+      3. URL: http://localhost:8084/WSEN/api/auth/LoginMedico
+      
+   1. 
+      1. Servicio: _LoginPaciente_
+      2. Desc: Recupera todos los datos de un usuario si es correcto.
+      3. URL: http://localhost:8084/WSEN/api/auth/LoginPaciente
 
 ### Servicio de Alimentos
    1. 
