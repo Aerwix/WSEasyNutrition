@@ -9,5 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         consulta (idConsulta, idPaciente, idMedico, idDieta, observaciones, fechaConsulta)
         VALUES
         (#{idConsulta}, #{idPaciente}, #{idMedico}, #{idDieta}, #{observaciones}, #{fechaConsulta})
-    </insert>
+    </insert> 
+   
+    <update id="actualizarConsulta" parameterType="POJOS.Consulta">
+        UPDATE 
+        consulta SET idPaciente = #{idPaciente}, idMedico = #{idMedico}, idDieta = #{idDieta}, observaciones = #{observaciones}, fechaConsulta = #{fechaConsulta}
+        WHERE idConsulta = #{idConsulta}
+    </update>
+    
+    <delete id="eliminarConsulta" parameterType="POJOS.Consulta">
+        DELETE FROM consulta where idConsulta = #{idConsulta}
+    </delete>
 </mapper>

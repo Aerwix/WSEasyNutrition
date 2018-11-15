@@ -25,11 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="getAlimentoByName" resultType="POJOS.Alimento" parameterType="String">
         SELECT 
-        alimento.idAlimento,
+        <!-- alimento.idAlimento,
         alimento.nombreAlimento,
         alimento.calorias,
-        alimento.porcion
-        FROM alimento WHERE alimento.nombre = #{nombre}
+        alimento.porcion -->
+        *
+        FROM alimento WHERE alimento.nombreAlimento = #{nombre}
     </select>
     
     <insert id="nuevoAlimento" parameterType="POJOS.Alimento">
@@ -40,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <update id="actualizarAlimento" parameterType="POJOS.Alimento">
-        UPDATE alimento SET nombre = #{nombreAlimento}, calorias = #{calorias}, idPorcion = #{idPorcion} WHERE idAlimento = #{idAlimento}
+        UPDATE alimento SET nombreAlimento = #{nombreAlimento}, calorias = #{calorias}, idPorcion = #{idPorcion} WHERE idAlimento = #{idAlimento}
     </update>
     
     <delete id="eliminarAlimento" parameterType="POJOS.Alimento">

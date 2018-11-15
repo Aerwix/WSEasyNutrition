@@ -59,4 +59,65 @@ public class ConsultaWS {
         }
         return resultado;
     }
+    
+    @Path("actualizarConsulta")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje actualizaConsulta(
+            @FormParam("idConsulta") Integer idConsulta,
+            @FormParam("idPaciente") Integer idPaciente,
+            @FormParam("idMedico") Integer idMedico,
+            @FormParam("idDieta") Integer idDieta,
+            @FormParam("observaciones") String observaciones,
+            @FormParam("fechaConsulta") String fechaConsulta){
+    
+        Mensaje resultado = null;
+        Consulta cat = new Consulta(idConsulta, idPaciente, idMedico, idDieta, observaciones, fechaConsulta);
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("consultas.actualizarConsulta" , cat);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Consulta modificada correctamente.");
+                }else{
+                    conn.rollback();//deshace la operación
+                    resultado = new Mensaje(false, "La consulta no se pudo modificar");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("eliminarConsulta")
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Mensaje eliminaAlimento(@FormParam("idConsulta") Integer idConsulta){
+    
+        Mensaje resultado = null;
+        SqlSession conn = MyBatisUtil.getSession();
+        if(conn !=null){
+            try {
+                int result = conn.update("consultas.eliminarConsulta", idConsulta);
+                if(result ==1){
+                    conn.commit();
+                    resultado = new Mensaje(false, "Consulta eliminada correctamente.");
+                }else{
+                    conn.rollback();
+                    resultado = new Mensaje(false, "La consulta no se pudo eliminar");
+                }               
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultado = new Mensaje(false, e.getMessage());
+            }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
 }

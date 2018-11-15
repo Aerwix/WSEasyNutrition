@@ -2,6 +2,7 @@ package ws;
 
 import POJOS.Medico;
 import POJOS.Mensaje;
+import POJOS.Paciente;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -34,6 +35,27 @@ public class LoginWS {
      if (conn != null){
          try {
              resultado = conn.selectOne("login.Medico", resultado);
+         } catch(Exception e) {
+             e.printStackTrace();
+         } finally {
+             conn.close();
+         }
+     }
+     return resultado;
+    }
+    
+    @Path("LoginPaciente")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Paciente LoginParaPaciente(
+            @FormParam("correo") String correo,
+            @FormParam("password") String password
+    ){
+     Paciente resultado = new Paciente(correo, password);
+     SqlSession conn = MyBatisUtil.getSession();
+     if (conn != null){
+         try {
+             resultado = conn.selectOne("login.Paciente", resultado);
          } catch(Exception e) {
              e.printStackTrace();
          } finally {

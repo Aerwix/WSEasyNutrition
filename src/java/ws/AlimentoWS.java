@@ -86,12 +86,12 @@ public class AlimentoWS {
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje nuevoAlimento(
             @FormParam("idAlimento") Integer idAlimento,
-            @FormParam("nombre") String nombre,
+            @FormParam("nombreAlimento") String nombreAlimento,
             @FormParam("calorias") double calorias,
-            @FormParam("porcion") Integer porcion){
+            @FormParam("idPorcion") Integer idPorcion){
         
         Mensaje resultado = null;
-        Alimento  cat = new Alimento(idAlimento, nombre, calorias, porcion);
+        Alimento  cat = new Alimento(idAlimento, nombreAlimento, calorias, idPorcion);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
@@ -118,12 +118,12 @@ public class AlimentoWS {
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje actualizaCatalogo(
             @FormParam("idAlimento") Integer idAlimento,
-            @FormParam("nombre") String nombre,
+            @FormParam("nombreAlimento") String nombreAlimento,
             @FormParam("calorias") double calorias,
-            @FormParam("porcion") Integer porcion){
+            @FormParam("idPorcion") Integer idPorcion){
     
         Mensaje resultado = null;
-        Alimento cat = new Alimento(idAlimento, nombre, calorias, porcion);
+        Alimento cat = new Alimento(idAlimento, nombreAlimento, calorias, idPorcion);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn !=null){
             try {

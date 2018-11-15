@@ -9,4 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         *
         FROM medico WHERE medico.correo = #{correo} AND medico.password = #{password}
     </select>
+    
+    <select id="Paciente" resultType="POJOS.Paciente" parameterType="POJOS.Paciente">
+        SELECT
+        *
+        FROM paciente WHERE paciente.correo = #{correo} AND paciente.password = #{password}
+    </select>
 </mapper>

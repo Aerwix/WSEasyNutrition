@@ -121,23 +121,24 @@ public class CitaWS {
         }
         return resultado;
     }
-    
+       
     @Path("getCitasByMedico/{idMedico}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Cita getByIdMedico(@PathParam("idMedico") Integer idMedico){
-        Cita resultado = new Cita();
+    public List<Cita> getAllCitasByMedico(
+            @PathParam("idMedico") Integer idMedico
+    ){
+        List<Cita> list = null;
         SqlSession conn = MyBatisUtil.getSession();
-        
-        if (conn != null ){
-            try {
-                resultado = conn.selectOne("citas.getCitasByMedico", idMedico);
-            } catch (Exception e){
-                e.printStackTrace();
+        if (conn != null){
+            try{
+                list = conn.selectList("citas.getCitasByMedico", idMedico);
+            } catch (Exception ex){
+                ex.printStackTrace();
             } finally {
                 conn.close();
             }
         }
-        return resultado;
+        return list;
     }
 }

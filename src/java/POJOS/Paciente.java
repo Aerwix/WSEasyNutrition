@@ -25,6 +25,11 @@ public class Paciente {
     public Paciente() {
     }
 
+    public Paciente(String correo, String password) {
+        this.correo = correo;
+        this.password = password;
+    }
+
     public Paciente(Integer idPaciente, String nombre, String apellidoMaterno, String apellidoPaterno, String direccion, String correo, String password, String telefono, String fechaNacimiento, String sexo, Integer idEstatus) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
