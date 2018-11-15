@@ -82,3 +82,8 @@ Alimentos | Citas | Consultas | Login |
       1. Desc: Modifica una consulta, solicitando el idConsulta.
       2. URL: http://localhost:8084/WSEN/api/consultas/actualizarConsulta
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+  
+   3. Servicio: _eliminarConsulta_
+      1. Desc: Elimina una consulta del registro, utilizando como parametro el idConsulta.
+      2. URL: http://localhost:8084/WSEN/api/consultas/eliminarConsulta
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
