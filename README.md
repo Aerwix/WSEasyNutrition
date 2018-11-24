@@ -87,3 +87,11 @@ Alimentos | Citas | Consultas | Login |
       1. Desc: Elimina una consulta del registro, utilizando como parametro el idConsulta.
       2. URL: http://localhost:8084/WSEN/api/consultas/eliminarConsulta
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+### Servicio de Medicos
+   1. Servicio: _nuevoMedico_
+      1. Desc: Agrega un Medico al registro.
+      2. URL: http://localhost:8084/WSEN/api/medicos/nuevoMedico
+      3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+
