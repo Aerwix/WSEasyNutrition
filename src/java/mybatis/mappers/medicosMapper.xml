@@ -11,4 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         medico (idMedico, nombre, apellidoMaterno, apellidoPaterno, direccion, correo, password, telefono, fechaNacimiento, sexo)
         VALUES (#{idMedico}, #{nombre}, #{apellidoMaterno}, #{apellidoPaterno}, #{direccion}, #{correo}, #{password}, #{telefono}, #{fechaNacimiento}, #{sexo})
     </insert>
+    
+    <update id="actualizarMedico" parameterType="POJOS.Medico">
+        UPDATE medico SET nombre = #{nombre}, apellidoMaterno = #{apellidoMaterno}, apellidoPaterno = #{apellidoPaterno}, direccion = #{direccion}, correo = #{correo}, password = #{password}, telefono = #{telefono}, fechaNacimiento = #{fechaNacimiento}, sexo = #{sexo} WHERE idMedico = #{idMedico}
+    </update>
+    
+    <delete id="eliminarMedico" parameterType="POJOS.Medico">
+        DELETE FROM medico where idMedico = #{idMedico}
+    </delete>
 </mapper>
