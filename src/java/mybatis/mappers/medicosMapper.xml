@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="medicos">
+    
+    <insert id="registrarMedico" parameterType="POJOS.Medico">
+        INSERT INTO
+        medico (idMedico, nombre, apellidoMaterno, apellidoPaterno, direccion, correo, password, telefono, fechaNacimiento, sexo)
+        VALUES (#{idMedico}, #{nombre}, #{apellidoMaterno}, #{apellidoPaterno}, #{direccion}, #{correo}, #{password}, #{telefono}, #{fechaNacimiento}, #{sexo})
+    </insert>
+</mapper>
