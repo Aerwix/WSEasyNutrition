@@ -7,29 +7,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Paciente">
     
     <insert id="registrarPaciente" parameterType="POJOS.Paciente">
-        insert into paciente(nombre,apellidoPaterno,apellidoMaterno,direccion,correo,password,telefono,fechaNacimiento,sexo)
-        values(#{nombre},#{apellidoPaterno},
-        #{apellidoMaterno},
-        #{direccion},
-        #{correo},
-        #{password},
-        #{telefono},
-        #{fechaNacimiento},
-        #{sexo},
-        idEstatus=#{idEstatus})
+        INSERT INTO
+        paciente (idPaciente, nombre, apellidoMaterno, apellidoPaterno, direccion, correo, password, telefono, fechaNacimiento, sexo, idEstatus)
+        VALUES (#{idPaciente}, #{nombre}, #{apellidoMaterno}, #{apellidoPaterno}, #{direccion}, #{correo}, #{password}, #{telefono}, #{fechaNacimiento}, #{sexo}, #{idEstatus})
     </insert>
     
     <update id="actualizarPaciente" parameterType="POJOS.Paciente">
-        update paciente set nombre=#{nombre},
-        apellidoPaterno=#{apellidoPaterno},
-        apellidoMaterno=#{apellidoMatern
-        direccion=#{direccion},
-        correo=#{correo},
-        password=#{password},
-        telefono=#{telefono},
-        fechaNacimiento=#{fechaNacimiento},
-        sexo=#{sexo},
-        idEstatus=#{idEstatus}
-        where idPaciente = #{idPaciente}
+        UPDATE
+        paciente SET nombre = #{nombre}, apellidoMaterno = #{apellidoMaterno}, apellidoPaterno = #{apellidoPaterno},
+        direccion = #{direccion}, correo = #{correo}, password = #{password}, telefono = #{telefono}, fechaNacimiento = #{fechaNacimiento}, 
+        sexo = #{sexo}, idEstatus = #{idEstatus} WHERE idPaciente = #{idPaciente}
     </update>
+    
+    <select id="getAllPacientes" resultType="POJOS.Paciente">
+        SELECT * FROM paciente;
+    </select>
+    
+    <select id="getPacienteById" resultType="POJOS.Paciente" parameterType="int">
+        SELECT
+        *
+        FROM paciente WHERE paciente.idPaciente = #{idPaciente}
+    </select>
 </mapper>
