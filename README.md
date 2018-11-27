@@ -112,13 +112,19 @@ Alimentos | Citas | Consultas | Login |
 
    2. Servicio: _actualizarPaciente_
       1. Desc: Modifica un Paciente, solicitando el idPaciente.
-      2. URL: http://localhost:8084/WSEN/api/pacientes/actualizarMedico
+      2. URL: http://localhost:8084/WSEN/api/pacientes/actualizarPaciente
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
 
    3. 
       1. Servicio: _getAllPacientes_
       2. Desc: Recupera todos los pacientes de la base de datos.
       3. URL: http://localhost:8084/WSEN/api/pacientes/getAllPacientes
+      
+   4. 
+      1. Servicio: _getPacienteByCorreo_
+      2. Desc: Recupera 1 solo alimento por el ID.
+      3. URL: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/correo
+      4. Ej: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/pepe@perez.com
 
 
       
