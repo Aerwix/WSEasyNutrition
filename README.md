@@ -103,6 +103,11 @@ Alimentos | Citas | Consultas | Login |
       1. Desc: Elimina una consulta del registro, utilizando como parametro el idConsulta.
       2. URL: http://localhost:8084/WSEN/api/medico/eliminarMedico
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
+      
+   4. Servicio: _getMedicoByCorreo_
+      2. Desc: Recupera 1 solo Medico por el correo.
+      3. URL: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/correo
+      4. Ej: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/pepe@perez.com
 
 ### Servicio de Pacientes
    1. Servicio: _nuevoPaciente_
@@ -122,7 +127,7 @@ Alimentos | Citas | Consultas | Login |
       
    4. 
       1. Servicio: _getPacienteByCorreo_
-      2. Desc: Recupera 1 solo alimento por el ID.
+      2. Desc: Recupera 1 solo Paciente por el correo.
       3. URL: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/correo
       4. Ej: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/pepe@perez.com
 
