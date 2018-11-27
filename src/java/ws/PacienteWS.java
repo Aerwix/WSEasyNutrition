@@ -124,16 +124,16 @@ public class PacienteWS {
         return list;
     }
     
-    @Path("getPacienteById/{idPaciente}")
+    @Path("getPacienteByCorreo/{correo}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Paciente getById(@PathParam("idPaciente") Integer idPaciente){
+    public Paciente getByCorreo(@PathParam("correo") String correo){
         Paciente resultado = new Paciente();
         SqlSession conn = MyBatisUtil.getSession();
         
         if (conn != null ){
             try {
-                resultado = conn.selectOne("Paciente.getPacienteById", idPaciente);
+                resultado = conn.selectOne("Paciente.getPacienteByEmail", correo);
             } catch (Exception e){
                 e.printStackTrace();
             } finally {

@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -123,6 +124,25 @@ public class MedicoWS {
                 e.printStackTrace();
                 resultado = new Mensaje(false, e.getMessage());
             }finally{
+                conn.close();
+            }
+        }
+        return resultado;
+    }
+    
+    @Path("getMedicoByCorreo/{correo}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Medico getByCorreo(@PathParam("correo") String correo){
+        Medico resultado = new Medico();
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if (conn != null ){
+            try {
+                resultado = conn.selectOne("medicos.getMedicoByEmail", correo);
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally {
                 conn.close();
             }
         }

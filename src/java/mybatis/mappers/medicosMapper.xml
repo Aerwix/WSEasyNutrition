@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="eliminarMedico" parameterType="POJOS.Medico">
         DELETE FROM medico where idMedico = #{idMedico}
     </delete>
+    
+    <select id="getMedicoByEmail" resultType="POJOS.Medico" parameterType="String">
+        SELECT * FROM medico WHERE medico.correo = #{correo}
+    </select>
 </mapper>

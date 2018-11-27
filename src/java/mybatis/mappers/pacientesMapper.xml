@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM paciente;
     </select>
     
-    <select id="getPacienteById" resultType="POJOS.Paciente" parameterType="int">
+    <select id="getPacienteByEmail" resultType="POJOS.Paciente" parameterType="String">
         SELECT
         *
-        FROM paciente WHERE paciente.idPaciente = #{idPaciente}
+        FROM paciente WHERE paciente.correo = #{correo}
     </select>
 </mapper>
