@@ -105,9 +105,9 @@ Alimentos | Citas | Consultas | Login |
       3. Ej: Usar POSTMAN en BODY con "x-www-form-urlencoded"
       
    4. Servicio: _getMedicoByCorreo_
-      2. Desc: Recupera 1 solo Medico por el correo.
-      3. URL: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/correo
-      4. Ej: http://localhost:8084/WSEN/api/pacientes/getPacienteByCorreo/pepe@perez.com
+      1. Desc: Recupera 1 solo Medico por el correo.
+      2. URL: http://localhost:8084/WSEN/api/medico/getMedicoByCorreo/correo
+      3. Ej: http://localhost:8084/WSEN/api/medico/getMedicoByCorreo/pepe@perez.com
 
 ### Servicio de Pacientes
    1. Servicio: _nuevoPaciente_
