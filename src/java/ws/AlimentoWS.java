@@ -130,10 +130,10 @@ public class AlimentoWS {
                 int result = conn.update("alimentos.actualizarAlimento" , cat);
                 if(result ==1){
                     conn.commit();
-                    resultado = new Mensaje(false, "Cliente modificado correctamente.");
+                    resultado = new Mensaje(false, "Alimento modificado correctamente.");
                 }else{
                     conn.rollback();//deshace la operación
-                    resultado = new Mensaje(false, "El cliente no se pudo modificar");
+                    resultado = new Mensaje(false, "El Alimento no se pudo modificar");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
