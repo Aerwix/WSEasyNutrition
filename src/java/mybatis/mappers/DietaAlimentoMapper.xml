@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DietaAlimentos">    
+    <insert id="nuevo" parameterType="POJOS.DietaAlimento">
+        INSERT INTO
+        dieta_alimento (idDietaAlimento, idAlimento, cantidad, idDieta, idHorario)
+        VALUES
+        (#{idDietaAlimento}, #{idAlimento}, #{cantidad}, #{idDieta}, #{idHorario})
+    </insert>
+    
+    <update id="actualizarDietaAlimento" parameterType="POJOS.DietaAlimento">
+        UPDATE dieta_alimento SET 
+        idAlimento = #{idAlimento}, 
+        cantidad = #{cantidad}, 
+        idDieta = #{idDieta}, 
+        idHorario = #{idHorario} 
+        WHERE idDietaAlimento = #{idDietaAlimento}
+    </update>
+    
+    <delete id="eliminarDietaAlimento" parameterType="POJOS.DietaAlimento">
+        DELETE FROM dieta_alimento where idDietaAlimento = #{idDietaAlimento}
+    </delete>
+    
+    <select id="getByIdDieta" resultType="POJOS.DietaAlimento" parameterType="int">
+        SELECT
+        *
+        FROM dieta_alimento WHERE dieta_alimento.idDieta = #{idDieta}
+    </select>
+</mapper>
