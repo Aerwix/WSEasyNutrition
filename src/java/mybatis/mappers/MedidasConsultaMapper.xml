@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MedidasConsulta">    
+    <insert id="nuevo" parameterType="POJOS.MedidasConsulta">
+        INSERT INTO
+        medidasconsulta (idMedicion, talla, peso, estatura, imc, idConsulta)
+        VALUES
+        (#{idMedicion}, #{talla}, #{peso}, #{estatura}, #{imc}, #{idConsulta})
+    </insert>
+    
+    <update id="actualizar" parameterType="POJOS.MedidasConsulta">
+        UPDATE medidasconsulta SET 
+        talla = #{talla}, 
+        peso = #{peso}, 
+        estatura = #{estatura},
+        imc = #{imc},
+        idConsulta = #{idConsulta}
+        WHERE idMedicion = #{idMedicion}
+    </update>
+    
+    <delete id="eliminar" parameterType="POJOS.MedidasConsulta">
+        DELETE FROM medidasconsulta where idMedicion = #{idMedicion}
+    </delete>
+    
+    <select id="getMedicionByIdConsulta" resultType="POJOS.MedidasConsulta" parameterType="int">
+        SELECT
+        *
+        FROM medidasconsulta WHERE medidasconsulta.idConsulta = #{idConsulta}
+    </select>
+</mapper>

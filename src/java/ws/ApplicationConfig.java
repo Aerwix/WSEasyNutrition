@@ -22,6 +22,7 @@ public class ApplicationConfig extends Application {
         resources.add(ws.DietaWS.class);
         resources.add(ws.LoginWS.class);
         resources.add(ws.MedicoWS.class);
+        resources.add(ws.MedidasConsultaWS.class);
         resources.add(ws.PacienteWS.class);
     }
     

@@ -16,3 +16,9 @@ Actualizar: http://localhost:8084/WSEN/api/DietaAlimentos/actualizar
 Eliminar: http://localhost:8084/WSEN/api/DietaAlimentos/eliminar
 
 
+### MedidasConsulta
+Nuevo: http://localhost:8084/WSEN/api/MedidasConsulta/nuevo
+Actualizar: http://localhost:8084/WSEN/api/MedidasConsulta/actualizar
+Eliminar: http://localhost:8084/WSEN/api/MedidasConsulta/eliminar
+BuscarIdConsulta: http://localhost:8084/WSEN/api/MedidasConsulta/getMedidasByIdConsulta/idConsulta
+
