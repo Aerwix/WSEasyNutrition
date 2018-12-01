@@ -21,11 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="getCitasByMedico" resultType="POJOS.Cita" parameterType="int">    
         SELECT
-        cita.idCita,
-        cita.idPaciente,
-        cita.idMedico,
-        cita.fecha,
-        cita.hora
-        FROM cita WHERE cita.idMedico = #{idMedico}
+        *
+        FROM cita WHERE cita.idCita = #{idCita}
     </select>
 </mapper>
