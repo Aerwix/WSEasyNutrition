@@ -120,4 +120,23 @@ public class ConsultaWS {
         }
         return resultado;
     }
+    
+    @Path("getById/{idConsulta}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Consulta getById(@PathParam("idConsulta") Integer idConsulta){
+        Consulta resultado = new Consulta();
+        SqlSession conn = MyBatisUtil.getSession();
+        
+        if (conn != null ){
+            try {
+                resultado = conn.selectOne("consultas.getById", idConsulta);
+            } catch (Exception e){
+                e.printStackTrace();
+            } finally {
+                conn.close();
+            }
+        }
+        return resultado;
+    }
 }

@@ -20,4 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="eliminarConsulta" parameterType="POJOS.Consulta">
         DELETE FROM consulta where idConsulta = #{idConsulta}
     </delete>
+    
+    <select id="getById" resultType="POJOS.Consulta" parameterType="int">
+        SELECT
+        *
+        FROM consulta WHERE consulta.idConsulta = #{idConsulta}
+    </select>
 </mapper>
