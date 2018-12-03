@@ -34,10 +34,10 @@ public class MedidasConsultaWS {
             @FormParam("peso") String peso,
             @FormParam("estatura") String estatura,
             @FormParam("imc") String imc,
-            @FormParam("idPorcion") Integer idPorcion){
+            @FormParam("idConsulta") Integer idConsulta){
         
         Mensaje resultado = null;
-        MedidasConsulta  cat = new MedidasConsulta(idMedicion, talla, peso, estatura, imc, idPorcion);
+        MedidasConsulta  cat = new MedidasConsulta(idMedicion, talla, peso, estatura, imc, idConsulta);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
@@ -68,10 +68,10 @@ public class MedidasConsultaWS {
             @FormParam("peso") String peso,
             @FormParam("estatura") String estatura,
             @FormParam("imc") String imc,
-            @FormParam("idPorcion") Integer idPorcion){
+            @FormParam("idConsulta") Integer idConsulta){
     
         Mensaje resultado = null;
-        MedidasConsulta  cat = new MedidasConsulta(idMedicion, talla, peso, estatura, imc, idPorcion);
+        MedidasConsulta  cat = new MedidasConsulta(idMedicion, talla, peso, estatura, imc, idConsulta);
         SqlSession conn = MyBatisUtil.getSession();
         if(conn !=null){
             try {
