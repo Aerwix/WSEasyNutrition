@@ -40,7 +40,7 @@ public class DietaAlimentoWS {
             @FormParam("idHorario") Integer idHorario){
         
         Mensaje resultado = null;
-        DietaAlimento  cat = new DietaAlimento(null , idAlimento, cantidad, idDieta, idHorario);
+        DietaAlimento  cat = new DietaAlimento(idDietaAlimento, idAlimento, cantidad, idDieta, idHorario);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
