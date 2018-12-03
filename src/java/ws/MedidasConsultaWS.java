@@ -29,7 +29,6 @@ public class MedidasConsultaWS {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje nuevo(
-            @FormParam("idMedicion") Integer idMedicion,
             @FormParam("talla") String talla,
             @FormParam("peso") String peso,
             @FormParam("estatura") String estatura,
