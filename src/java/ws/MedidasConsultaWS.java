@@ -29,6 +29,7 @@ public class MedidasConsultaWS {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje nuevo(
+            @FormParam("idMedicion") Integer idMedicion,
             @FormParam("talla") String talla,
             @FormParam("peso") String peso,
             @FormParam("estatura") String estatura,
@@ -36,7 +37,7 @@ public class MedidasConsultaWS {
             @FormParam("idPorcion") Integer idPorcion){
         
         Mensaje resultado = null;
-        MedidasConsulta  cat = new MedidasConsulta(null, talla, peso, estatura, imc, idPorcion);
+        MedidasConsulta  cat = new MedidasConsulta(idMedicion, talla, peso, estatura, imc, idPorcion);
         SqlSession conn = MyBatisUtil.getSession();
         if (conn != null) {
             try {
