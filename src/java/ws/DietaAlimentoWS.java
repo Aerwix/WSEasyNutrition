@@ -33,7 +33,6 @@ public class DietaAlimentoWS {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Mensaje nuevo(
-            @FormParam("idDietaAlimento") Integer idDietaAlimento,
             @FormParam("idAlimento") Integer idAlimento,
             @FormParam("cantidad") double cantidad,
             @FormParam("idDieta") Integer idDieta,
